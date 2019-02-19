@@ -2,10 +2,10 @@ package otto
 
 import (
 	"fmt"
+	"github.com/robertkrimen/otto/token"
 	"math"
 	"runtime"
-
-	"github.com/robertkrimen/otto/token"
+	"unicode"
 )
 
 func (self *_runtime) cmpl_evaluate_nodeExpression(node _nodeExpression) Value {
@@ -235,6 +235,16 @@ func (self *_runtime) cmpl_evaluate_nodeCallExpression(node *_nodeCallExpression
 		if name == "" {
 			// FIXME Maybe typeof?
 			panic(rt.panicTypeError("%v is not a function", vl, at))
+		}
+		switch node.callee.(type) {
+		case *_nodeDotExpression:
+			if rr := []rune(name); unicode.IsLetter(rr[0]) && unicode.IsLower(rr[0]) {
+				//fmt.Printf("'%s' is not a function. try to replace it to higher case.\n", name)
+				rr[0] = unicode.ToUpper(rr[0])
+				name = string(rr)
+				node.callee.(*_nodeDotExpression).identifier = name
+				return self.cmpl_evaluate_nodeCallExpression(node, withArgumentList)
+			}
 		}
 		panic(rt.panicTypeError("'%s' is not a function", name, at))
 	}
