@@ -2,7 +2,7 @@ package otto
 
 import (
 	"fmt"
-	"github.com/robertkrimen/otto/token"
+	"github.com/kangzq0530/otto/token"
 	"math"
 	"runtime"
 	"unicode"

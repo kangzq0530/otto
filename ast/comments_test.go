@@ -1,7 +1,7 @@
 package ast
 
 import (
-	"github.com/robertkrimen/otto/file"
+	"github.com/kangzq0530/otto/file"
 	"testing"
 )
 

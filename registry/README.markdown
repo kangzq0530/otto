@@ -1,6 +1,6 @@
 # registry
 --
-    import "github.com/robertkrimen/otto/registry"
+    import "github.com/kangzq0530/otto/registry"
 
 Package registry is an expirmental package to facillitate altering the otto
 runtime via import.

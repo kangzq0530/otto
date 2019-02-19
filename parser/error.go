@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/robertkrimen/otto/file"
-	"github.com/robertkrimen/otto/token"
+	"github.com/kangzq0530/otto/file"
+	"github.com/kangzq0530/otto/token"
 )
 
 const (
